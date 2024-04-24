@@ -10,7 +10,11 @@ export class Auth {
     return this.bearer;
   }
 
-  async me(): Promise<Pick<User, 'id' | 'customization_option'>> {
+  async me(): Promise<{
+    id: Pick<User, 'id'>;
+    customization_option: Pick<User, 'customization_option'>;
+    bearer: string;
+  }> {
     return (
       await this.client.get('/auth/whoami', {
         headers: {
