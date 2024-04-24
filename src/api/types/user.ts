@@ -9,7 +9,7 @@ export interface User {
   customization_option: 'PROFESSIONAL' | 'STUDENT';
 }
 
-export interface UserSignup extends Omit<User, 'id'>{
+export interface UserSignup extends Omit<User, 'id'> {
   password: string;
   birthdate: string;
 }

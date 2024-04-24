@@ -7,5 +7,5 @@ export const App = () => {
         <Route path="*" Component={() => <div>Page not found</div>} />
       </Routes>
     </Router>
-  )
+  );
 };
