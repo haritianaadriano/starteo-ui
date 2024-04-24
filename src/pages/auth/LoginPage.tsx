@@ -36,7 +36,11 @@ export default function Login() {
   });
 
   async function onSubmit(values: z.infer<typeof signinSchema>) {
+<<<<<<< HEAD
     const request = new AuthApi(client);
+=======
+    const request = new Auth(client);
+>>>>>>> 053c913 (feat: init axios client)
     const res = await request.signin(values);
     console.log(res);
   }
