@@ -26,3 +26,7 @@ dist-ssr
 # lock file
 yarn.lock
 package-lock.json
+
+# local & env
+.env
+*.env
