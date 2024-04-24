@@ -1,3 +1,11 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 export const App = () => {
-  return <h1>Hello !</h1>;
+  return (
+    <Router>
+      <Routes>
+        <Route path="*" Component={() => <div>Page not found</div>} />
+      </Routes>
+    </Router>
+  )
 };
