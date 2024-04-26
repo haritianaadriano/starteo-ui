@@ -20,13 +20,15 @@ import {
 } from '@/components/ui/form';
 import { AuthApi } from '@/api/provider';
 import { client, localClient } from '@/api/provider/axios.client';
+import { useNavigate } from 'react-router-dom';
 
 const signinSchema = z.object({
   email: z.string(),
   password: z.string(),
 });
 
-export default function LoginPage() {
+export default function Login() {
+  const navigate = useNavigate();
   const form = useForm<z.infer<typeof signinSchema>>({
     resolver: zodResolver(signinSchema),
     defaultValues: {
@@ -36,10 +38,11 @@ export default function LoginPage() {
   });
 
   async function onSubmit(values: z.infer<typeof signinSchema>) {
-    const request = new AuthApi(localClient);
+    const request = new AuthApi(client);
     request.signin(values);
     const me = await request.me();
     sessionStorage.setItem('me', me.id);
+    navigate('/');
   }
 
   return (
