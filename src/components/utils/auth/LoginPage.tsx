@@ -37,8 +37,9 @@ export default function Login() {
 
   async function onSubmit(values: z.infer<typeof signinSchema>) {
     const request = new AuthApi(client);
-    const res = await request.signin(values);
-    console.log(res);
+    request.signin(values);
+    const me = await request.me();
+    sessionStorage.setItem('me', me.id);
   }
 
   return (
