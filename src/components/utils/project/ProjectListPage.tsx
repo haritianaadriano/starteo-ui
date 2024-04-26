@@ -1,6 +1,7 @@
 import { Project } from '@/api';
 import { client, localClient } from '@/api/provider/axios.client';
 import { ProjectsApi } from '@/api/provider/projects';
+import { formatDate } from '@/common/utils/date';
 import {
   Card,
   CardContent,
@@ -12,7 +13,7 @@ import {
 import { useEffect, useState } from 'react';
 
 export default function ProjectList() {
-  const projectProvider = new ProjectsApi(client);
+  const projectProvider = new ProjectsApi(localClient);
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
@@ -29,15 +30,16 @@ export default function ProjectList() {
   }, []);
 
   return (
-    <div>
+    <div className="w-full h-screen flex items-center justify-center">
       {projects.map((project) => (
-        <Card>
+        <Card className="bg-slate-300">
           <CardHeader>
             <CardTitle>{project.title}</CardTitle>
             <CardDescription>{project.description}</CardDescription>
+            <CardDescription>collected: {project.description}</CardDescription>
           </CardHeader>
           <CardContent>
-            <p>{project.creation_datetime.toLocaleString()}</p>
+            <p>{formatDate('' + project.creation_datetime)}</p>
           </CardContent>
           <CardFooter>
             <p>{project.user.username}</p>
