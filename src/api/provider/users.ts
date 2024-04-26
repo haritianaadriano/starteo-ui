@@ -1,10 +1,10 @@
 import { User } from '@/api';
 import { AxiosInstance } from 'axios';
 
-export class Users {
+export class UsersApi {
   constructor(private client: AxiosInstance) {}
 
-  async listUsers(page: number = 1, page_size: number = 20): Promise<User[]> {
+  async listUsers(page: number = 1, page_size: number = 10): Promise<User[]> {
     return (await this.client.get(`/users?page=${page}&page_size=${page_size}`))
       .data;
   }

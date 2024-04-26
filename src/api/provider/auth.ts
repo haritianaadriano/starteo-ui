@@ -1,13 +1,15 @@
 import { AxiosInstance } from 'axios';
 import { User, UserSignIn, UserSignInResponse, UserSignup } from '@/api';
 
-export class Auth {
+export class AuthApi {
+  //TODO: is it really necessary to create allways an instance of a provider class to access bearer
+  // instead of just store it with zustand or session storage ?
   private bearer: string = '';
 
   constructor(private client: AxiosInstance) {}
 
-  getToken(): string {
-    return this.bearer;
+  getToken(): string | null {
+    return sessionStorage.getItem('bearer');
   }
 
   async me(): Promise<{
@@ -24,17 +26,17 @@ export class Auth {
     ).data;
   }
 
-  async sign_in(data: UserSignIn): Promise<UserSignInResponse> {
+  async signin(data: UserSignIn): Promise<UserSignInResponse> {
     const response: UserSignInResponse = (
       await this.client.post('/auth/signin', data)
     ).data;
-    this.bearer = response.token;
+    sessionStorage.setItem('bearer', response.token);
     return response;
   }
 
   async signup(data: UserSignup): Promise<User> {
     const response: User = (await this.client.post('/auth/signup', data)).data;
-    await this.sign_in({ email: data.email, password: data.password });
+    await this.signin({ email: data.email, password: data.password });
     return response;
   }
 }
