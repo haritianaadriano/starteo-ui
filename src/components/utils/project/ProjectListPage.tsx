@@ -26,7 +26,7 @@ export default function ProjectList() {
     };
 
     fetchData();
-  });
+  }, []);
 
   return (
     <div>
