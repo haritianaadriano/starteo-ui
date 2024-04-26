@@ -26,7 +26,7 @@ const signinSchema = z.object({
   password: z.string(),
 });
 
-export default function Login() {
+export default function LoginPage() {
   const form = useForm<z.infer<typeof signinSchema>>({
     resolver: zodResolver(signinSchema),
     defaultValues: {

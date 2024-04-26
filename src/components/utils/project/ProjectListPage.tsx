@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/card';
 import { useEffect, useState } from 'react';
 
-export default function ProjectList() {
+export default function ProjectListPage() {
   const projectProvider = new ProjectsApi(localClient);
   const [projects, setProjects] = useState<Project[]>([]);
 
@@ -36,7 +36,9 @@ export default function ProjectList() {
           <CardHeader>
             <CardTitle>{project.title}</CardTitle>
             <CardDescription>{project.description}</CardDescription>
-            <CardDescription>collected: {project.description}</CardDescription>
+            <CardDescription>
+              collected: {project.donation_collected}
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <p>{formatDate('' + project.creation_datetime)}</p>
