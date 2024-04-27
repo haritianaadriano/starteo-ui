@@ -13,14 +13,14 @@ export class AuthApi {
   }
 
   async me(): Promise<{
-    id: Pick<User, 'id'>;
+    id: string;
     customization_option: Pick<User, 'customization_option'>;
     bearer: string;
   }> {
     return (
       await this.client.get('/auth/whoami', {
         headers: {
-          Authorization: this.bearer,
+          Authorization: 'Bearer ' + sessionStorage.getItem('bearer'),
         },
       })
     ).data;

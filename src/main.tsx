@@ -1,20 +1,25 @@
 import './assets/style.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Login from './pages/auth/LoginPage';
 import './assets/style.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import ProjectList from './pages/project/ProjectListPage';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
+import Login from './components/utils/auth/Login';
+import { ProjectListPage } from './pages/projects/ProjectListPage';
+import { HomePage } from './pages/home/HomePage';
 
 const ROUTER = createBrowserRouter([
   {
-    path: '/',
+    path: '/login',
     element: <Login />,
   },
   {
     path: '/projects',
-    element: <ProjectList />,
+    element: <ProjectListPage />,
+  },
+  {
+    path: '/',
+    element: <HomePage />,
   },
 ]);
 
