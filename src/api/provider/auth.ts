@@ -4,7 +4,7 @@ import { User, UserSignIn, UserSignInResponse, UserSignup } from '@/api';
 export class AuthApi {
   //TODO: is it really necessary to create allways an instance of a provider class to access bearer
   // instead of just store it with zustand or session storage ?
-  private bearer: string = '';
+  // private bearer: string = '';
 
   constructor(private client: AxiosInstance) {}
 

@@ -19,7 +19,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { AuthApi } from '@/api/provider';
-import { client, localClient } from '@/api/provider/axios.client';
+import { client } from '@/api/provider/axios.client';
 import { useNavigate } from 'react-router-dom';
 
 const signinSchema = z.object({

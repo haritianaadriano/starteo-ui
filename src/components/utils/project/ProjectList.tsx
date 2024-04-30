@@ -1,5 +1,5 @@
 import { Project } from '@/api';
-import { client, localClient } from '@/api/provider/axios.client';
+import { client } from '@/api/provider/axios.client';
 import { ProjectsApi } from '@/api/provider/projects';
 import Layout from '@/common/components/Layout';
 import { formatDate } from '@/common/utils/date';
