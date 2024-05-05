@@ -1,4 +1,5 @@
 import { Project } from '@/api';
+import { AuthApi } from '@/api/provider';
 import { client } from '@/api/provider/axios.client';
 import { ProjectsApi } from '@/api/provider/projects';
 import Layout from '@/common/components/Layout';
@@ -14,7 +15,8 @@ import {
 import { useEffect, useState } from 'react';
 
 export default function ProjectList() {
-  const projectProvider = new ProjectsApi(client);
+  const authProvider = new AuthApi(client);
+  const projectProvider = new ProjectsApi(client, authProvider);
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {

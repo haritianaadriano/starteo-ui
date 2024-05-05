@@ -17,13 +17,15 @@ export class AuthApi {
     customization_option: Pick<User, 'customization_option'>;
     bearer: string;
   }> {
-    return (
+    let me = (
       await this.client.get('/auth/whoami', {
         headers: {
           Authorization: 'Bearer ' + sessionStorage.getItem('bearer'),
         },
       })
     ).data;
+    sessionStorage.setItem('bearer', me.bearer);
+    return me;
   }
 
   async signin(data: UserSignIn): Promise<UserSignInResponse> {

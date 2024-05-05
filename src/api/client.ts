@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { AuthApi, UsersApi } from './provider';
+import { AuthApi } from './provider';
 
 export class Client {
-  public users: UsersApi;
+  // public users: UsersApi;
   public auth: AuthApi;
 
   constructor() {
@@ -10,7 +10,7 @@ export class Client {
     const client_instance = axios.create({
       baseURL: `https://${domain}`,
     });
-    this.users = new UsersApi(client_instance);
+    // this.users = new UsersApi(client_instance);
     this.auth = new AuthApi(client_instance);
   }
 }

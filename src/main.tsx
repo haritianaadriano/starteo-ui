@@ -7,6 +7,7 @@ import { TooltipProvider } from '@radix-ui/react-tooltip';
 import Login from './components/utils/auth/Login';
 import { ProjectListPage } from './pages/projects/ProjectListPage';
 import { HomePage } from './pages/home/HomePage';
+import { ProfilPage } from './pages/users/ProfilPage';
 
 const ROUTER = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const ROUTER = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
+  },
+  {
+    path: '/profil',
+    element: <ProfilPage />,
   },
 ]);
 

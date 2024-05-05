@@ -23,6 +23,9 @@ export default function Layout({ children }: { children: any }) {
             <div className="grid gap-2 py-6">
               <Link to="/">Home</Link>
             </div>
+            <div className="grid gap-2 py-6">
+              <Link to="/profil">Profil</Link>
+            </div>
           </SheetContent>
         </Sheet>
         <NavigationMenu className="hidden lg:flex">
@@ -30,6 +33,16 @@ export default function Layout({ children }: { children: any }) {
             <NavigationMenuLink asChild>
               <Link to="/">Home</Link>
             </NavigationMenuLink>
+            <div>
+              <NavigationMenuLink asChild>
+                <Link to="/login">Signin</Link>
+              </NavigationMenuLink>
+            </div>
+            <div>
+              <NavigationMenuLink asChild>
+                <Link to="/profil">Profil</Link>
+              </NavigationMenuLink>
+            </div>
           </NavigationMenuList>
         </NavigationMenu>
       </header>
