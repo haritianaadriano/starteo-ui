@@ -8,3 +8,10 @@ export interface Project {
   user: User;
   donation_collected: number;
 }
+
+export interface CreateProject {
+  id: string;
+  description: string;
+  title: string;
+  user_id: string;
+}

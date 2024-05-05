@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import { Project } from '../types';
+import { CreateProject, Project } from '../types';
 import { AuthApi } from './auth';
 
 export class ProjectsApi {
@@ -12,7 +12,6 @@ export class ProjectsApi {
     page: number = 1,
     page_size: number = 10,
   ): Promise<Project[]> {
-    console.log(sessionStorage.getItem('bearer'));
     this.authApi.me();
 
     return (
@@ -24,5 +23,15 @@ export class ProjectsApi {
     ).data;
   }
 
-  async createProject() {}
+  async createProject(data: CreateProject[]): Promise<Project[]> {
+    this.authApi.me();
+    const meId = sessionStorage.getItem('me');
+    return (
+      await this.client.put(`/users/${meId}/projects`, data, {
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('bearer'),
+        },
+      })
+    ).data;
+  }
 }

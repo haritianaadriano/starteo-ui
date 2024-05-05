@@ -8,6 +8,7 @@ import Login from './components/utils/auth/Login';
 import { ProjectListPage } from './pages/projects/ProjectListPage';
 import { HomePage } from './pages/home/HomePage';
 import { ProfilPage } from './pages/users/ProfilPage';
+import CreateProject from './components/utils/project/CreateProject';
 
 const ROUTER = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const ROUTER = createBrowserRouter([
   {
     path: '/profil',
     element: <ProfilPage />,
+  },
+  {
+    path: '/users/:userid/write/projects',
+    element: <CreateProject />,
   },
 ]);
 
