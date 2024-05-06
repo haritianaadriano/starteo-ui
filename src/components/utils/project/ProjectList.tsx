@@ -3,16 +3,14 @@ import { AuthApi } from '@/api/provider';
 import { client } from '@/api/provider/axios.client';
 import { ProjectsApi } from '@/api/provider/projects';
 import Layout from '@/common/components/Layout';
-import { formatDate } from '@/common/utils/date';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { useEffect, useState } from 'react';
+import ProjectCaroussel from './ProjectCaroussel';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 export default function ProjectList() {
   const authProvider = new AuthApi(client);
@@ -34,24 +32,19 @@ export default function ProjectList() {
 
   return (
     <Layout>
-      <div className="w-full h-screen flex items-center justify-center">
-        {projects.map((project) => (
-          <Card className="bg-slate-300">
-            <CardHeader>
-              <CardTitle>{project.title}</CardTitle>
-              <CardDescription>{project.description}</CardDescription>
-              <CardDescription>
-                collected: {project.donation_collected}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>{formatDate('' + project.creation_datetime)}</p>
-            </CardContent>
-            <CardFooter>
-              <p>{project.user.username}</p>
-            </CardFooter>
-          </Card>
-        ))}
+      <div className="flex items-center justify-center">
+        <h1 className="text-lg font-bold">Last project of the week</h1>
+      </div>
+      <div className="w-full flex items-center justify-center">
+        <Carousel>
+          <CarouselContent>
+            {projects.map((project) => (
+              <ProjectCaroussel items={project} />
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </Layout>
   );

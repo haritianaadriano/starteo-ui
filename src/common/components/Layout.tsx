@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 export default function Layout({ children }: { children: any }) {
   return (
     <>
-      <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6">
+      <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6 bg-slate-200">
         <Sheet>
           <SheetTrigger asChild>
             <Button className="lg:hidden" size="icon" variant="outline">
@@ -19,7 +19,9 @@ export default function Layout({ children }: { children: any }) {
             </Button>
           </SheetTrigger>
           <SheetContent side="left">
-            <Link to="/login">Signin</Link>
+            <div className="grid gap-2 py-6">
+              <Link to="/login">Signin</Link>
+            </div>
             <div className="grid gap-2 py-6">
               <Link to="/">Home</Link>
             </div>
@@ -28,18 +30,27 @@ export default function Layout({ children }: { children: any }) {
             </div>
           </SheetContent>
         </Sheet>
-        <NavigationMenu className="hidden lg:flex">
-          <NavigationMenuList>
-            <NavigationMenuLink asChild>
+        <NavigationMenu className="hidden w-full md:block md:w-auto">
+          <NavigationMenuList className="font-medium p-4 md:space-x-8 rtl:space-x-reverse bg-slate-200">
+            <NavigationMenuLink
+              className="block py-2 px-3 text-gray-900 rounded md:hover:text-slate-500"
+              asChild
+            >
               <Link to="/">Home</Link>
             </NavigationMenuLink>
             <div>
-              <NavigationMenuLink asChild>
+              <NavigationMenuLink
+                className="block py-2 px-3 text-gray-900 rounded md:hover:text-slate-500"
+                asChild
+              >
                 <Link to="/login">Signin</Link>
               </NavigationMenuLink>
             </div>
             <div>
-              <NavigationMenuLink asChild>
+              <NavigationMenuLink
+                className="block py-2 px-3 text-gray-900 rounded md:hover:text-slate-500"
+                asChild
+              >
                 <Link to="/profil">Profil</Link>
               </NavigationMenuLink>
             </div>
