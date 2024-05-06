@@ -35,13 +35,15 @@ export default function ProjectList() {
       <div className="flex items-center justify-center">
         <h1 className="text-lg font-bold">Last project of the week</h1>
       </div>
-      <div className="w-full flex items-center justify-center">
-        <Carousel>
+
+      <div className="flex items-center justify-center mt-6">
+        <Carousel className="w-80">
           <CarouselContent>
             {projects.map((project) => (
               <ProjectCaroussel items={project} />
             ))}
           </CarouselContent>
+
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
