@@ -12,7 +12,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 
-export default function ProjectList() {
+export default function ActualProjectList() {
   const authProvider = new AuthApi(client);
   const projectProvider = new ProjectsApi(client, authProvider);
   const [projects, setProjects] = useState<Project[]>([]);

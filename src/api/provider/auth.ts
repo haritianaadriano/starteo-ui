@@ -17,15 +17,26 @@ export class AuthApi {
     customization_option: Pick<User, 'customization_option'>;
     bearer: string;
   }> {
-    let me = (
-      await this.client.get('/auth/whoami', {
+    let me;
+    await this.client
+      .get('/auth/whoami', {
         headers: {
           Authorization: 'Bearer ' + sessionStorage.getItem('bearer'),
         },
       })
-    ).data;
-    sessionStorage.setItem('bearer', me.bearer);
-    return me;
+      .then(function (response) {
+        me = response.data;
+      })
+      .catch(function (err) {
+        if (err.response) {
+          if (err.response.status >= 400) {
+            return;
+          }
+        }
+      });
+
+    sessionStorage.setItem('bearer', me!.bearer);
+    return me!;
   }
 
   async signin(data: UserSignIn): Promise<UserSignInResponse> {

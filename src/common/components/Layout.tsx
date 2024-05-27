@@ -20,13 +20,18 @@ export default function Layout({ children }: { children: any }) {
           </SheetTrigger>
           <SheetContent side="left">
             <div className="grid gap-2 py-6">
-              <Link to="/login">Signin</Link>
+              <Link to="/signin">Signin</Link>
             </div>
             <div className="grid gap-2 py-6">
               <Link to="/">Home</Link>
             </div>
             <div className="grid gap-2 py-6">
               <Link to="/profil">Profil</Link>
+            </div>
+            <div className="grid gap-2 py-6">
+              <Link to={`/users/${sessionStorage.getItem('me')}/projects`}>
+                My Projects
+              </Link>
             </div>
           </SheetContent>
         </Sheet>
@@ -52,6 +57,16 @@ export default function Layout({ children }: { children: any }) {
                 asChild
               >
                 <Link to="/profil">Profil</Link>
+              </NavigationMenuLink>
+            </div>
+            <div>
+              <NavigationMenuLink
+                className="block py-2 px-3 text-gray-900 rounded md:hover:text-slate-500"
+                asChild
+              >
+                <Link to={`/users/${sessionStorage.getItem('me')}/projects`}>
+                  My Projects
+                </Link>
               </NavigationMenuLink>
             </div>
           </NavigationMenuList>

@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/form';
 import { AuthApi } from '@/api/provider';
 import { client } from '@/api/provider/axios.client';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const signinSchema = z.object({
   email: z.string(),
@@ -86,6 +86,18 @@ export default function Login() {
               <Button type="submit">Signin</Button>
             </form>
           </Form>
+
+          <span className="flex-all-center gap-1">
+            <span className="font-Montserrat text-center">
+              Create an account ?&nbsp;
+            </span>
+            <Link
+              to="/signup"
+              className="font-Quicksand text-md font-bold hover:underline hover:text-blue-700"
+            >
+              Signup
+            </Link>
+          </span>
         </CardContent>
       </Card>
     </div>

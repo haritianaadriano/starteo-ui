@@ -14,6 +14,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
+      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"],
       "@/*": ["./src/*"]
     },
     /* Linting */

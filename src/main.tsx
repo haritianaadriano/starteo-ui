@@ -9,11 +9,19 @@ import { ProjectListPage } from './pages/projects/ProjectListPage';
 import { HomePage } from './pages/home/HomePage';
 import { ProfilPage } from './pages/users/ProfilPage';
 import CreateProject from './components/utils/project/CreateProject';
+import { OwnProjectListPage } from './pages/projects/OwnProjectListPage';
+import SignupStepper from './components/utils/auth/Signup';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const ROUTER = createBrowserRouter([
   {
-    path: '/login',
+    path: '/signin',
     element: <Login />,
+  },
+  {
+    path: '/signup',
+    element: <SignupStepper />,
   },
   {
     path: '/projects',
@@ -31,12 +39,18 @@ const ROUTER = createBrowserRouter([
     path: '/users/:userid/write/projects',
     element: <CreateProject />,
   },
+  {
+    path: '/users/:userid/projects',
+    element: <OwnProjectListPage />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <TooltipProvider>
-      <RouterProvider router={ROUTER} />
-    </TooltipProvider>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <TooltipProvider>
+        <RouterProvider router={ROUTER} />
+      </TooltipProvider>
+    </LocalizationProvider>
   </React.StrictMode>,
 );

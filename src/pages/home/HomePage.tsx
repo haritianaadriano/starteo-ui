@@ -4,6 +4,6 @@ export const HomePage = () => {
   return sessionStorage.getItem('me') ? (
     <Navigate to="/projects" />
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/signin" />
   );
 };
