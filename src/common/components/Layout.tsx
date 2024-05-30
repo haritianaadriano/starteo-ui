@@ -48,7 +48,7 @@ export default function Layout({ children }: { children: any }) {
                 className="block py-2 px-3 text-gray-900 rounded md:hover:text-slate-500"
                 asChild
               >
-                <Link to="/login">Signin</Link>
+                <Link to="/signin">Signin</Link>
               </NavigationMenuLink>
             </div>
             <div>
