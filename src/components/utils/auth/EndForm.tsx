@@ -1,11 +1,21 @@
 import { UserSignup } from '@/api';
-import { Button } from '@mui/material';
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+} from '@mui/material';
 import { UseFormReturn } from 'react-hook-form';
-import { DatePicker } from '@mui/x-date-pickers';
 
 interface Props {
   onPrevious(): void;
   form: UseFormReturn<UserSignup>;
+}
+
+enum CustomizationOption {
+  'PROFESSIONAL',
+  'STUDENT',
 }
 
 export const EndForm = ({ form, onPrevious }: Props) => {
@@ -14,12 +24,50 @@ export const EndForm = ({ form, onPrevious }: Props) => {
 
   return (
     <div>
-      <div>
+      <div className="m-5">
         <p className="font-Montserrat font-bold text-lg">{lastname}</p>
         <p className="font-Quicksand font-semibold text-md">{firstname}</p>
       </div>
 
-      <DatePicker label="Tell we your birthday" />
+      <div className="m-5">
+        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Phone number
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+          {...form.register('phone_number')}
+        />
+      </div>
+
+      <div className="m-5">
+        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Birthdate
+        </label>
+        <input
+          type="date"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+          {...form.register('birthdate', { valueAsDate: true })}
+        />
+      </div>
+
+      <FormControl fullWidth className="m-5">
+        <InputLabel id="demo-simple-select-label">Your career path</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          label="Age"
+          {...form.register('customization_option')}
+        >
+          <MenuItem value={CustomizationOption.PROFESSIONAL}>
+            Professional
+          </MenuItem>
+          <MenuItem value={CustomizationOption.STUDENT}>Student</MenuItem>
+        </Select>
+      </FormControl>
 
       <div className="flex items-center justify-between">
         <Button type="button" variant="contained" onClick={onPrevious}>
