@@ -11,12 +11,14 @@ export const FirstForm = ({ form }: Props) => {
   return (
     <>
       <TextField
+        className="bg-teal-700"
         fullWidth
         error={!!form.formState.errors['lastname']?.message}
         label={form.formState.errors['lastname']?.message || 'Lastname'}
         {...form.register('lastname', { required: 'required value' })}
       />
       <TextField
+        className="bg-teal-700"
         fullWidth
         error={!!form.formState.errors['firstname']?.message}
         label={form.formState.errors['firstname']?.message || 'Firstname'}
@@ -24,6 +26,7 @@ export const FirstForm = ({ form }: Props) => {
       />
 
       <TextField
+        className="bg-teal-700"
         fullWidth
         error={!!form.formState.errors['email']?.message}
         label={form.formState.errors['email']?.message || 'Email'}
@@ -31,6 +34,7 @@ export const FirstForm = ({ form }: Props) => {
       />
 
       <TextField
+        className="bg-teal-700"
         fullWidth
         error={!!form.formState.errors['username']?.message}
         label={form.formState.errors['username']?.message || 'Username'}

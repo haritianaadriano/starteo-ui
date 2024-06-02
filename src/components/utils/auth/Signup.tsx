@@ -57,7 +57,7 @@ export default function SignupStepper() {
   };
 
   return (
-    <Box className="w-full h-screen flex items-center justify-center">
+    <Box className="w-full h-screen flex items-center justify-center bg-cyan-950">
       <form
         onSubmit={form.handleSubmit(handleSubmitData)}
         className="full-view py-5 flex flex-col gap-5 px-5"

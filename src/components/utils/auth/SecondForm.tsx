@@ -13,6 +13,7 @@ export const SecondForm = ({ form, onPrevious }: Props) => {
   return (
     <>
       <TextField
+        className="bg-teal-700"
         fullWidth
         type="password"
         autoComplete="current-password"
@@ -21,12 +22,14 @@ export const SecondForm = ({ form, onPrevious }: Props) => {
         {...form.register('password', { required: 'required value' })}
       />
       <TextField
+        className="bg-teal-700"
         fullWidth
         error={!!form.formState.errors['career_path']?.message}
         label={form.formState.errors['career_path']?.message || 'Career Path'}
         {...form.register('career_path')}
       />
       <Textarea
+        className="bg-teal-700"
         placeholder="Describe your self"
         {...form.register('description')}
       />

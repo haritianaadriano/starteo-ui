@@ -21,6 +21,7 @@ import {
 import { AuthApi } from '@/api/provider';
 import { client } from '@/api/provider/axios.client';
 import { Link, useNavigate } from 'react-router-dom';
+import IMAGES from '@/images/images';
 
 const signinSchema = z.object({
   email: z.string(),
@@ -46,7 +47,10 @@ export default function Login() {
   }
 
   return (
-    <div className="w-full h-screen flex items-center justify-center">
+    <div className="w-full h-screen flex items-center justify-center bg-cyan-950">
+      <Card className="max-w-sm m-10">
+        <img className="h-fit w-fit" src={IMAGES.loginImage} alt="" />
+      </Card>
       <Card className="max-w-sm">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold">Login</CardTitle>
