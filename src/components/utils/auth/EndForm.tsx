@@ -13,11 +13,6 @@ interface Props {
   form: UseFormReturn<UserSignup>;
 }
 
-enum CustomizationOption {
-  'PROFESSIONAL',
-  'STUDENT',
-}
-
 export const EndForm = ({ form, onPrevious }: Props) => {
   const firstname: string = (form?.getValues('firstname') as string) || '';
   const lastname: string = (form?.getValues('lastname') as string) || '';
@@ -62,10 +57,8 @@ export const EndForm = ({ form, onPrevious }: Props) => {
           label="Age"
           {...form.register('customization_option')}
         >
-          <MenuItem value={CustomizationOption.PROFESSIONAL}>
-            Professional
-          </MenuItem>
-          <MenuItem value={CustomizationOption.STUDENT}>Student</MenuItem>
+          <MenuItem value={'PROFESSIONAL'}>Professional</MenuItem>
+          <MenuItem value={'STUDENT'}>Student</MenuItem>
         </Select>
       </FormControl>
 
