@@ -1,4 +1,7 @@
-export default function CustomProjectCard() {
+import { Project } from '@/api';
+import { formatDateThenGetDateAndMonth } from '@/common/utils/date';
+
+export default function CustomProjectCard({ items }: { items: Project }) {
   return (
     <div className="rounded overflow-hidden shadow-lg">
       <a href="#"></a>
@@ -19,8 +22,9 @@ export default function CustomProjectCard() {
 
         <a href="!#">
           <div className="text-sm absolute top-0 right-0 bg-indigo-600 px-4 text-white rounded-full h-16 w-16 flex flex-col items-center justify-center mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
-            <span className="font-bold">27</span>
-            <small>March</small>
+            <span className="font-bold">
+              {formatDateThenGetDateAndMonth('' + items.creation_datetime)}
+            </span>
           </div>
         </a>
       </div>
@@ -29,9 +33,9 @@ export default function CustomProjectCard() {
           href="#"
           className="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out"
         >
-          Best View in Newyork City
+          {items.title}
         </a>
-        <p className="text-gray-500 text-sm">The city that never sleeps</p>
+        <p className="text-gray-500 text-sm">{items.description}</p>
       </div>
       <div className="px-6 py-4 flex flex-row items-center">
         <span className="py-1 text-sm font-regular text-gray-900 mr-1 flex flex-row items-center">

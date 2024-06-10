@@ -52,7 +52,9 @@ export default function ActualProjectList() {
       <div className="max-w-screen-xl mt-5 mx-auto p-5 sm:p-10 md:p-16 rounded bg-slate-300 border-slate-800">
         <CustomSearchBar />
         <div className="grid m-5 grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
-          <CustomProjectCard />
+          {projects.map((project) => (
+            <CustomProjectCard items={project} />
+          ))}
         </div>
       </div>
     </Layout>
