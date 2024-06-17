@@ -8,6 +8,36 @@ export class ProjectsApi {
     private authApi: AuthApi,
   ) {}
 
+  async getProjectById(projectId: string): Promise<Project> {
+    this.authApi.me();
+    return (
+      await this.client.get(`/projects/${projectId}`, {
+        headers: {
+          Authorization: 'Bearer ' + sessionStorage.getItem('bearer'),
+        },
+      })
+    ).data;
+  }
+
+  async getOwnProjects(
+    page: number = 1,
+    page_size: number = 10,
+  ): Promise<Project[]> {
+    this.authApi.me();
+    let meId = sessionStorage.getItem('me');
+
+    return (
+      await this.client.get(
+        `/users/${meId}/projects?page=${page}&page_size=${page_size}`,
+        {
+          headers: {
+            Authorization: 'Bearer ' + sessionStorage.getItem('bearer'),
+          },
+        },
+      )
+    ).data;
+  }
+
   async getProjects(
     page: number = 1,
     page_size: number = 10,

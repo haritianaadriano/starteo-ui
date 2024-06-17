@@ -13,6 +13,7 @@ import { OwnProjectListPage } from './pages/projects/OwnProjectListPage';
 import SignupStepper from './components/utils/auth/Signup';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import SelfProject from './components/utils/project/SelfProject';
 
 const ROUTER = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const ROUTER = createBrowserRouter([
   {
     path: '/users/:userid/projects',
     element: <OwnProjectListPage />,
+  },
+  {
+    path: '/projects/:projectid',
+    element: <SelfProject />,
   },
 ]);
 
