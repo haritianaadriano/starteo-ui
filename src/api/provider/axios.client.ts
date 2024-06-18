@@ -5,5 +5,5 @@ export const localClient = axios.create({
 });
 
 export const client = axios.create({
-  baseURL: 'https://preprod-personal-blog-api.adaptable.app',
+  baseURL: 'https://starteo-preprod.adaptable.app/',
 });
